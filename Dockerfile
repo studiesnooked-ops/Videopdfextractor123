@@ -1,10 +1,14 @@
-FROM python:3.9.7-slim-buster
+FROM python:3.11-slim
 
 WORKDIR /app
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
-    git wget pv jq python3-dev ffmpeg mediainfo \
+    git \
+    wget \
+    curl \
+    ffmpeg \
+    --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements and install Python dependencies
